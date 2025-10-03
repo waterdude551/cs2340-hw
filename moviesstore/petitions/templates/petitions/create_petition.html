@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+          {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+          {% endif %}
+
+      <div class="col mx-auto mb-3">
+
+        <h2>Create Petition</h2>
+
+        <hr />
+
+        <form method="POST" action="{% url 'petitions.create_petition' %}">
+
+          {% csrf_token %}
+
+          <p>
+
+            <label for="title">Title:</label>
+
+            <textarea name="title" required
+
+            class="form-control" id="title">{{ title|default_if_none:'' }}</textarea>
+
+          </p>
+
+          <p>
+
+            <label for="description">Description:</label>
+
+            <textarea name="description" required class="form-control" id="description">{{ description|default_if_none:'' }}</textarea>
+
+          </p>
+
+          <div class="text-start">
+
+            <button type="submit"
+
+              class="btn bg-dark text-white">Submit petition
+
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock content %}
